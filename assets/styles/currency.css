@@ -9,7 +9,7 @@
 h1{
   margin: auto;
   margin-bottom: 26px;
-  font-size: 42px;
+  font-size: 48px;
   border: 1px solid black;
 }
 
@@ -86,13 +86,17 @@ span{
   right: 65px;
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 438px) {
  h1 {
-   font-size: 27px;
-   width: 245px;
+   font-size: 28px;
+   width: 246px;
    margin-left: 20px;
  }
- input, select {
-   width: 100%;
- }
+
 }
+
+@media screen and (max-width: 556px) {
+  input, select {
+    width: 100%;
+  }
+ }
