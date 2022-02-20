@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Basic Currency Converter</title>
+    <link rel="stylesheet" href="assets/styles/currency.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/scripts/sendRequest.js" defer ></script>
+  </head>
+
+<body>
+
+<div class="container">
+  <h1>Currency Converter</h1>
+  <div class="currencyContainer">
+    <h3>From</h3>
+    <div class="fromContainer">
+      <input type="number" id="fromValue" name="fromValue"><span id='spanFrom'></span></input>
+      <select id="country1">
+        <option value="" readonly="true" hidden="true" selected>Select Country</option>
+      </select>
+    </div>
+    <h3>To</h3>
+    <div class="toContainer">
+      <input type="number" id="toValue" name="toValue" disabled><span id='spanTo'></span>
+      <select id="country2">
+        <option value="" readonly="true" hidden="true" selected>Select Country</option>
+      </select>
+    </div>
+    <div class="btns">
+      <button id="convert">Convert</button>  
+      <button id="reset">Reset</button>  
+    </div> 
+  </div>
+</div>
+</body>
+</html>
+
+
