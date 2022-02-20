@@ -10,6 +10,7 @@ h1{
   margin: auto;
   margin-bottom: 26px;
   font-size: 42px;
+  border: 1px solid black;
 }
 
 .currencyContainer{
@@ -85,8 +86,13 @@ span{
   right: 65px;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 380px) {
  h1 {
-   font-size: 32px;
+   font-size: 27px;
+   width: 245px;
+   margin-left: 20px;
+ }
+ input, select {
+   width: 100%;
  }
 }
