@@ -7,10 +7,10 @@
 }
 
 h1{
+  max-width: 600px;
   margin: auto;
   margin-bottom: 26px;
   font-size: 48px;
-  border: 1px solid black;
 }
 
 .currencyContainer{
@@ -36,7 +36,6 @@ input, select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  border: 1px solid black;
   margin-right: 20px;
 }
 
@@ -51,20 +50,20 @@ input::-webkit-inner-spin-button {
 }
 
 
-  button {
-    display: block;
-    width: 100px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 18px;
-    margin: 25px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    border: 1px solid black;
-    
-  }
+button {
+  display: block;
+  width: 100px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 18px;
+  margin: 25px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid black;
+  
+}
 
 button:hover {
   background-color: #45a049;
