@@ -82,6 +82,7 @@ convertBtn.addEventListener('click', () => {
 resetBtn.addEventListener('click', () => {
     resultHandler.innerHTML = '';
     fromValue.value = '';
+    toValue.value = '';
     listAllCountry1.value = '';
     listAllCountry2.value = '';
 })
