@@ -4,9 +4,10 @@ const listAllCountry2 = document.getElementById('country2');
 const convertBtn = document.getElementById('convert');
 const fromValue = document.getElementById('fromValue');
 const toValue = document.getElementById('toValue');
-const spanFrom = document.getElementById('spanFrom');
-const spanTo = document.getElementById('spanTo');
 const resetBtn = document.getElementById('reset');
+const resultHandler = document.querySelector('.resultContainer');
+const pResult = document.createElement('p');
+const spinner = document.createElement('i');
 
 function listOfCountries(){
     axios.get(`https://restcountries.com/v2/all`).then( result => {
@@ -18,8 +19,7 @@ function listOfCountries(){
                 const optionEl2 = document.createElement('option');
                 optionEl2.innerText = `${res.name}`;
                 listAllCountry2.append(optionEl2);
-            }
-            
+            } 
         }
     }).catch(function (error) {
         console.error(error.message);
@@ -44,14 +44,9 @@ async function getCountryCode(country){
 }
 
 async function exchangeRate(fromCount, toCount) {
-        // let array = [];
         const countryCode1 = await getCountryCode(fromCount);
-        // array.push(countryCode1);
-        spanFrom.innerText = `${countryCode1}`;
         const countryCode2 = await getCountryCode(toCount);
-        // array.push(countryCode2);
-        // return array;
-        spanTo.innerText = `${countryCode2}`;
+        
         const options = {
             method: 'GET',
             url: 'https://currency-exchange.p.rapidapi.com/exchange',
@@ -65,6 +60,10 @@ async function exchangeRate(fromCount, toCount) {
           axios.request(options).then( response => {
               const calValue = fromValue.value * response.data;
               toValue.value = calValue;
+              resultHandler.removeChild(spinner);
+              pResult.innerText =  `${fromValue.value} ${countryCode1} = ${toValue.value} ${countryCode2}`;
+              resultHandler.append(pResult);
+ 
           }).catch(function (error) {
               console.error(error.message);
           });
@@ -72,16 +71,17 @@ async function exchangeRate(fromCount, toCount) {
 
 convertBtn.addEventListener('click', () => {
     if (listAllCountry1.value && listAllCountry2.value){
+        pResult.innerText = '';
+        toValue.value = '';
+        spinner.className = 'fa fa-refresh fa-spin';
+        resultHandler.append(spinner);
         exchangeRate(listAllCountry1.value, listAllCountry2.value);
     }
 })
 
 resetBtn.addEventListener('click', () => {
+    resultHandler.innerHTML = '';
     fromValue.value = '';
-    toValue.value = '';
-    spanFrom.innerText = '';
-    spanTo.innerText = '';
     listAllCountry1.value = '';
     listAllCountry2.value = '';
-
 })
