@@ -87,9 +87,9 @@ span{
 
 @media screen and (max-width: 438px) {
  h1 {
-   font-size: 16px;
+   font-size: 28px;
    width: 246px;
-   margin-left: 20px;
+   margin-left: 64px;
  }
 
 }
