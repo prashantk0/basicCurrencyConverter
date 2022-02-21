@@ -47,26 +47,48 @@ async function exchangeRate(fromCount, toCount) {
         const countryCode1 = await getCountryCode(fromCount);
         const countryCode2 = await getCountryCode(toCount);
         
+        // const options = {
+        //     method: 'GET',
+        //     url: 'https://currency-exchange.p.rapidapi.com/exchange',
+        //     params: { from: `${countryCode1}`, to: `${countryCode2}`, q: '1.0'},
+        //     headers: {
+        //       'x-rapidapi-host': 'currency-exchange.p.rapidapi.com',
+        //       'x-rapidapi-key': '40cf3b32a4msh22fbcd956cfcdd4p1d5d21jsn90d00f848f0e'
+        //     }
+        //   };
+          
+        //   axios.request(options).then( response => {
+        //       const calValue = fromValue.value * response.data;
+        //       toValue.value = calValue;
+        //       resultHandler.removeChild(spinner);
+        //       pResult.innerText =  `${fromValue.value} ${countryCode1} = ${toValue.value} ${countryCode2}`;
+        //       resultHandler.append(pResult);
+ 
+        //   }).catch(function (error) {
+        //       console.error(error.message);
+        //   });
         const options = {
             method: 'GET',
-            url: 'https://currency-exchange.p.rapidapi.com/exchange',
-            params: { from: `${countryCode1}`, to: `${countryCode2}`, q: '1.0'},
+            url: 'https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert',
+            params: {from: `${countryCode1}`, to: `${countryCode2}`, amount: `${fromValue.value}`},
             headers: {
-              'x-rapidapi-host': 'currency-exchange.p.rapidapi.com',
+              'x-rapidapi-host': 'currency-conversion-and-exchange-rates.p.rapidapi.com',
               'x-rapidapi-key': '40cf3b32a4msh22fbcd956cfcdd4p1d5d21jsn90d00f848f0e'
             }
           };
           
           axios.request(options).then( response => {
-              const calValue = fromValue.value * response.data;
-              toValue.value = calValue;
-              resultHandler.removeChild(spinner);
-              pResult.innerText =  `${fromValue.value} ${countryCode1} = ${toValue.value} ${countryCode2}`;
-              resultHandler.append(pResult);
- 
+            //   console.log(response.data.result);
+                toValue.value = response.data.result;
+                resultHandler.removeChild(spinner);
+                pResult.innerText =  `${fromValue.value} ${countryCode1} = ${toValue.value} ${countryCode2}`;
+                resultHandler.append(pResult);
           }).catch(function (error) {
-              console.error(error.message);
+              console.error(error);
           });
+
+
+
 }
 
 convertBtn.addEventListener('click', () => {
@@ -80,7 +102,7 @@ convertBtn.addEventListener('click', () => {
 })
 
 resetBtn.addEventListener('click', () => {
-    resultHandler.innerHTML = '';
+    resultHandler.removeChild(pResult);
     fromValue.value = '';
     toValue.value = '';
     listAllCountry1.value = '';
